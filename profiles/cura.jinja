@@ -1,13 +1,5 @@
 include(default)
 
-[replace_requires]
-{% if platform.system() == 'Linux' %}
-# FIXME: once gRPC is updated to 1.67.0 or higher
-# Using 255.10 or higher https://github.com/conan-io/conan-center-index/issues/24889
-# https://github.com/conan-io/conan-center-index/blob/879e140d9438ab491aceea766d0cf0ae3595dae8/recipes/grpc/all/conanfile.py#L122
-libsystemd/*: libsystemd/[>=255.10]
-{% endif %}
-
 [settings]
 compiler.cppstd=17
 curaengine*:compiler.cppstd=20
@@ -20,26 +12,20 @@ dulcificum*:compiler.cppstd=20
 curator/*:compiler.cppstd=20
 
 [options]
-asio-grpc/*:local_allocator=recycling_allocator
-grpc/*:csharp_plugin=False
-grpc/*:node_plugin=False
-grpc/*:objective_c_plugin=False
-grpc/*:php_plugin=False
-grpc/*:ruby_plugin=False
-grpc/*:python_plugin=False
-boost/*:header_only=True
-{% if platform.system() == 'Linux' %}
-openssl/*:shared=True
-{% endif %}
-pyarcus/*:shared=True
-pysavitar/*:shared=True
-pynest2d/*:shared=True
-cpython/*:shared=True
-cpython/*:with_tkinter=False
-cpython/*:with_curses=False
-{% if platform.system() == 'Windows' %}
-dulcificum/*:shared=False
-{% else %}
-dulcificum/*:shared=True
-{% endif %}
-clipper/*:shared=True
+asio-grpc:local_allocator=recycling_allocator
+grpc:csharp_plugin=False
+grpc:node_plugin=False
+grpc:objective_c_plugin=False
+grpc:php_plugin=False
+grpc:ruby_plugin=False
+grpc:python_plugin=False
+boost:header_only=True
+openssl:shared=True
+pyarcus:shared=True
+pysavitar:shared=True
+pynest2d:shared=True
+cpython:shared=True
+cpython:with_tkinter=False
+cpython:with_curses=False
+dulcificum:shared=True
+clipper:shared=True
